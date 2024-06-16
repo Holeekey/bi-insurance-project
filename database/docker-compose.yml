@@ -12,6 +12,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./database.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./datawarehouse.sql:/docker-entrypoint-initdb.d/create_datawarehouse.sql
 
 volumes:
   pgdata:

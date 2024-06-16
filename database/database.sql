@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS SEGURO_G29827867.PRODUCTO(
     nb_producto VARCHAR(20) NOT NULL UNIQUE,
     descripcion VARCHAR(100) NOT NULL,
     cod_tipo_producto INTEGER REFERENCES SEGURO_G29827867.TIPO_PRODUCTO(cod_tipo_producto),
-    calificacion VARCHAR(20) NOT NULL
+    calificacion INTEGER NOT NULL
 );
 CREATE TABLE IF NOT EXISTS SEGURO_G29827867.CLIENTE (
     cod_cliente SERIAL PRIMARY KEY,
@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS SEGURO_G29827867.SINIESTRO(
     descrip_siniestro VARCHAR(100) NOT NULL
 );
 CREATE TABLE IF NOT EXISTS SEGURO_G29827867.REGISTRO_SINIESTRO(
+    cod_cliente INTEGER REFERENCES SEGURO_G29827867.CLIENTE(cod_cliente),
     nro_contrato INTEGER REFERENCES SEGURO_G29827867.CONTRATO(nro_contrato),
     nro_siniestro INTEGER REFERENCES SEGURO_G29827867.SINIESTRO(nro_siniestro),
     fecha_siniestro DATE NOT NULL,
@@ -74,5 +75,5 @@ CREATE TABLE IF NOT EXISTS SEGURO_G29827867.REGISTRO_SINIESTRO(
     monto_reconocido DECIMAL(10,2) NOT NULL,
     monto_solicitado DECIMAL(10,2) NOT NULL,
     monto DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY(nro_contrato, nro_siniestro, fecha_siniestro)
+    PRIMARY KEY(nro_contrato, nro_siniestro, fecha_siniestro, cod_cliente)
 );
