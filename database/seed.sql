@@ -87,3 +87,31 @@ VALUES
     ('Siniestro 8'),
     ('Siniestro 9'),
     ('Siniestro 10');
+
+INSERT INTO SEGURO_G29827867.CONTRATO (descrip_contrato)
+VALUES
+    ('Contrato 1'),
+    ('Contrato 2'),
+    ('Contrato 3'),
+    ('Contrato 4'),
+    ('Contrato 5'),
+    ('Contrato 6'),
+    ('Contrato 7'),
+    ('Contrato 8'),
+    ('Contrato 9'),
+    ('Contrato 10');
+
+INSERT INTO SEGURO_G29827867.REGISTRO_CONTRATO (cod_cliente, nro_contrato, cod_producto, fecha_inicio, fecha_fin, estado_contrato, monto)
+VALUES
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Lionel Messi'),
+    1,(SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Salud'),
+    '2020-01-01','2020-12-31','ACTIVO',300000
+    ),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Paulo Dybala'),
+    2,(SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Vida'),
+    '2020-01-01','2020-12-31','VENCIDO',200000
+    ),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Alejandro Gómez'),
+    3,(SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Automóvil'),
+    '2020-01-01','2020-12-31','SUSPENDIDO',250000
+    );
