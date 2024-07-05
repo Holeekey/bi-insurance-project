@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS SEGURO_G29827867.REGISTRO_SINIESTRO(
     cod_cliente INTEGER REFERENCES SEGURO_G29827867.CLIENTE(cod_cliente),
     nro_contrato INTEGER REFERENCES SEGURO_G29827867.CONTRATO(nro_contrato),
     nro_siniestro INTEGER REFERENCES SEGURO_G29827867.SINIESTRO(nro_siniestro),
+    cod_producto INTEGER REFERENCES SEGURO_G29827867.PRODUCTO(cod_producto),
     cod_sucursal INTEGER REFERENCES SEGURO_G29827867.SUCURSAL(cod_sucursal),
     fecha_siniestro DATE NOT NULL,
     fecha_respuesta DATE NOT NULL,
@@ -76,5 +77,16 @@ CREATE TABLE IF NOT EXISTS SEGURO_G29827867.REGISTRO_SINIESTRO(
     monto_reconocido DECIMAL(10,2) NOT NULL,
     monto_solicitado DECIMAL(10,2) NOT NULL,
     monto DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY(nro_contrato, nro_siniestro, fecha_siniestro, cod_cliente, cod_sucursal)
+    PRIMARY KEY(nro_contrato, cod_cliente, nro_siniestro, fecha_siniestro, cod_producto, cod_sucursal)
+);
+CREATE TABLE IF NOT EXISTS SEGURO_G29827867.META(
+    cod_cliente INTEGER REFERENCES SEGURO_G29827867.CLIENTE(cod_cliente),
+    nro_contrato INTEGER REFERENCES SEGURO_G29827867.CONTRATO(nro_contrato),
+    cod_producto INTEGER REFERENCES SEGURO_G29827867.PRODUCTO(cod_producto),
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE NOT NULL,
+    monto_meta_ingreso DECIMAL(10,2) NOT NULL,
+    meta_clientes_renvados INTEGER NOT NULL,
+    meta_clientes_asegurados INTEGER NOT NULL,
+    PRIMARY KEY(nro_contrato, fecha_inicio, fecha_fin, cod_cliente, cod_producto)
 );

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>fact-registro-siniestro-transformation</name>
+    <name>fact-metas-transformation</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,9 +427,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2024/07/05 00:34:11.684</created_date>
+    <created_date>2024/07/05 19:35:28.681</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2024/07/05 00:34:11.684</modified_date>
+    <modified_date>2024/07/05 19:35:28.681</modified_date>
     <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
@@ -523,7 +523,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>dim_fecha_siniestro</from>
+      <from>dim_fecha_inicio</from>
       <to>id_lookup 2 2 2</to>
       <enabled>Y</enabled>
     </hop>
@@ -538,7 +538,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>dim_fecha_respuesta</from>
+      <from>dim_fecha_fin</from>
       <to>id_lookup</to>
       <enabled>Y</enabled>
     </hop>
@@ -548,28 +548,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>dim_sucursal</from>
-      <to>id_lookup 21</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>id_lookup 21</from>
-      <to>id_lookup 2 2 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>dim_siniestro</from>
-      <to>id_lookup 21 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>id_lookup 21 2</from>
-      <to>id_lookup 21</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>raw_facts</from>
-      <to>id_lookup 21 2</to>
+      <to>id_lookup 2 2 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -585,7 +565,7 @@
       <schema_name/>
     </partitioning>
     <connection>seguros_db</connection>
-    <sql>SELECT * FROM seguro_g29827867.registro_siniestro;</sql>
+    <sql>SELECT * FROM seguro_g29827867.meta;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -642,11 +622,103 @@
       <value-meta>
         <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>nro_siniestro</name>
+        <name>cod_producto</name>
         <length>9</length>
         <precision>0</precision>
         <origin>raw_facts</origin>
-        <comments>nro_siniestro</comments>
+        <comments>cod_producto</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Caracas</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Date</type>
+        <storagetype>normal</storagetype>
+        <name>fecha_inicio</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>raw_facts</origin>
+        <comments>fecha_inicio</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Caracas</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Date</type>
+        <storagetype>normal</storagetype>
+        <name>fecha_fin</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>raw_facts</origin>
+        <comments>fecha_fin</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Caracas</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Number</type>
+        <storagetype>normal</storagetype>
+        <name>monto_meta_ingreso</name>
+        <length>10</length>
+        <precision>2</precision>
+        <origin>raw_facts</origin>
+        <comments>monto_meta_ingreso</comments>
+        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Caracas</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>meta_clientes_renvados</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>raw_facts</origin>
+        <comments>meta_clientes_renvados</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -665,150 +737,12 @@
       <value-meta>
         <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>cod_sucursal</name>
+        <name>meta_clientes_asegurados</name>
         <length>9</length>
         <precision>0</precision>
         <origin>raw_facts</origin>
-        <comments>cod_sucursal</comments>
+        <comments>meta_clientes_asegurados</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Caracas</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Date</type>
-        <storagetype>normal</storagetype>
-        <name>fecha_siniestro</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>raw_facts</origin>
-        <comments>fecha_siniestro</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Caracas</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Date</type>
-        <storagetype>normal</storagetype>
-        <name>fecha_respuesta</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>raw_facts</origin>
-        <comments>fecha_respuesta</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Caracas</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Boolean</type>
-        <storagetype>normal</storagetype>
-        <name>rechazo</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>raw_facts</origin>
-        <comments>rechazo</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Caracas</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>monto_reconocido</name>
-        <length>10</length>
-        <precision>2</precision>
-        <origin>raw_facts</origin>
-        <comments>monto_reconocido</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Caracas</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>monto_solicitado</name>
-        <length>10</length>
-        <precision>2</precision>
-        <origin>raw_facts</origin>
-        <comments>monto_solicitado</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Caracas</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>monto</name>
-        <length>10</length>
-        <precision>2</precision>
-        <origin>raw_facts</origin>
-        <comments>monto</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
@@ -833,8 +767,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>384</yloc>
+      <xloc>352</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -875,8 +809,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>384</yloc>
+      <xloc>784</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -956,8 +890,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>240</yloc>
+      <xloc>896</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -974,44 +908,36 @@
     </partitioning>
     <fields>
       <field>
-        <name>rechazo</name>
+        <name>monto_meta_ingreso</name>
         <rename/>
       </field>
       <field>
-        <name>monto_reconocido</name>
+        <name>meta_clientes_renvados</name>
         <rename/>
       </field>
       <field>
-        <name>monto_solicitado</name>
+        <name>meta_clientes_asegurados</name>
         <rename/>
       </field>
       <field>
-        <name>sk_sucursal</name>
+        <name>sk_fecha_inicio</name>
         <rename/>
       </field>
       <field>
-        <name>sk_fecha_respuesta</name>
-        <rename/>
-      </field>
-      <field>
-        <name>sk_fecha_siniestro</name>
+        <name>sk_fecha_fin</name>
         <rename/>
       </field>
       <field>
         <name>sk_contrato</name>
-        <rename/>
+        <rename>sk_dim_contrato</rename>
       </field>
       <field>
         <name>sk_cliente</name>
-        <rename/>
+        <rename>sk_dim_cliente</rename>
       </field>
       <field>
         <name>sk_producto</name>
-        <rename/>
-      </field>
-      <field>
-        <name>sk_siniestro</name>
-        <rename/>
+        <rename>sk_dim_producto</rename>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1024,8 +950,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
-      <yloc>384</yloc>
+      <xloc>1040</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1063,8 +989,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1248</xloc>
-      <yloc>384</yloc>
+      <xloc>1200</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1084,52 +1010,52 @@
     <update_bypassed>N</update_bypassed>
     <lookup>
       <schema>seguro_dw_g29829867</schema>
-      <table>fact_registro_siniestro</table>
+      <table>fact_metas</table>
       <key>
-        <name>rechazo</name>
-        <field>rechazado</field>
+        <name>monto_meta_ingreso</name>
+        <field>meta_ingresos</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
-        <name>monto_reconocido</name>
-        <field>monto_reconocido</field>
+        <name>meta_clientes_renvados</name>
+        <field>meta_clientes_renvados</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
-        <name>monto_solicitado</name>
-        <field>monto_solicitado</field>
+        <name>meta_clientes_asegurados</name>
+        <field>meta_clientes_asegurados</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
-        <name>sk_sucursal</name>
-        <field>sk_dim_sucursal</field>
+        <name>sk_fecha_inicio</name>
+        <field>sk_fecha_inicio</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
-        <name>sk_contrato</name>
+        <name>sk_fecha_fin</name>
+        <field>sk_fecha_fin</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>sk_dim_contrato</name>
         <field>sk_dim_contrato</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
-        <name>sk_cliente</name>
+        <name>sk_dim_cliente</name>
         <field>sk_dim_cliente</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
-        <name>sk_producto</name>
+        <name>sk_dim_producto</name>
         <field>sk_dim_producto</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>sk_siniestro</name>
-        <field>sk_dim_siniestro</field>
         <condition>=</condition>
         <name2/>
       </key>
@@ -1139,71 +1065,49 @@
         <condition>=</condition>
         <name2/>
       </key>
-      <key>
-        <name>sk_fecha_siniestro</name>
-        <field>sk_fecha_siniestro</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>sk_fecha_respuesta</name>
-        <field>sk_fecha_respuesta</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
       <value>
-        <name>rechazado</name>
-        <rename>rechazo</rename>
+        <name>meta_ingresos</name>
+        <rename>monto_meta_ingreso</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>monto_reconocido</name>
-        <rename>monto_reconocido</rename>
+        <name>meta_clientes_renvados</name>
+        <rename>meta_clientes_renvados</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>monto_solicitado</name>
-        <rename>monto_solicitado</rename>
+        <name>meta_clientes_asegurados</name>
+        <rename>meta_clientes_asegurados</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>sk_dim_sucursal</name>
-        <rename>sk_sucursal</rename>
+        <name>sk_fecha_inicio</name>
+        <rename>sk_fecha_inicio</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>sk_fecha_fin</name>
+        <rename>sk_fecha_fin</rename>
         <update>Y</update>
       </value>
       <value>
         <name>sk_dim_contrato</name>
-        <rename>sk_contrato</rename>
+        <rename>sk_dim_contrato</rename>
         <update>Y</update>
       </value>
       <value>
         <name>sk_dim_cliente</name>
-        <rename>sk_cliente</rename>
+        <rename>sk_dim_cliente</rename>
         <update>Y</update>
       </value>
       <value>
         <name>sk_dim_producto</name>
-        <rename>sk_producto</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>sk_dim_siniestro</name>
-        <rename>sk_siniestro</rename>
+        <rename>sk_dim_producto</rename>
         <update>Y</update>
       </value>
       <value>
         <name>cantidad</name>
         <rename>cantidad</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>sk_fecha_respuesta</name>
-        <rename>sk_fecha_respuesta</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>sk_fecha_siniestro</name>
-        <rename>sk_fecha_siniestro</rename>
         <update>Y</update>
       </value>
     </lookup>
@@ -1216,8 +1120,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1376</xloc>
-      <yloc>384</yloc>
+      <xloc>1328</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1258,8 +1162,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>384</yloc>
+      <xloc>896</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1339,8 +1243,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>240</yloc>
+      <xloc>672</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1381,13 +1285,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>384</yloc>
+      <xloc>672</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>dim_fecha_siniestro</name>
+    <name>dim_fecha_inicio</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1462,8 +1366,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>240</yloc>
+      <xloc>464</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1478,19 +1382,19 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <from>dim_fecha_siniestro</from>
+    <from>dim_fecha_inicio</from>
     <input_sorted>N</input_sorted>
     <preserve_memory>Y</preserve_memory>
     <sorted_list>N</sorted_list>
     <integer_pair>N</integer_pair>
     <lookup>
       <key>
-        <name>fecha_siniestro</name>
+        <name>fecha_inicio</name>
         <field>fecha</field>
       </key>
       <value>
         <name>sk_tiempo</name>
-        <rename>sk_fecha_siniestro</rename>
+        <rename>sk_fecha_inicio</rename>
         <default/>
         <type>Integer</type>
       </value>
@@ -1504,8 +1408,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>384</yloc>
+      <xloc>464</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1520,19 +1424,19 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <from>dim_fecha_respuesta</from>
+    <from>dim_fecha_fin</from>
     <input_sorted>N</input_sorted>
     <preserve_memory>Y</preserve_memory>
     <sorted_list>N</sorted_list>
     <integer_pair>N</integer_pair>
     <lookup>
       <key>
-        <name>fecha_respuesta</name>
+        <name>fecha_fin</name>
         <field>fecha</field>
       </key>
       <value>
         <name>sk_tiempo</name>
-        <rename>sk_fecha_respuesta</rename>
+        <rename>sk_fecha_fin</rename>
         <default/>
         <type>Integer</type>
       </value>
@@ -1546,13 +1450,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>384</yloc>
+      <xloc>576</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>dim_fecha_respuesta</name>
+    <name>dim_fecha_fin</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1627,8 +1531,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>240</yloc>
+      <xloc>576</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1708,254 +1612,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>dim_sucursal</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>seguros_db</connection>
-    <sql>SELECT sk_sucursal, cod_sucursal FROM "seguro_dw_g29829867"."dim_sucursal"</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cached_row_meta_active>N</cached_row_meta_active>
-    <row-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>sk_sucursal</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>dim_estado_contrato 2</origin>
-        <comments>sk_sucursal</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Caracas</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>cod_sucursal</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>dim_estado_contrato 2</origin>
-        <comments>cod_sucursal</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Caracas</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-    </row-meta>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>384</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>id_lookup 21</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <from>dim_sucursal</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>cod_sucursal</name>
-        <field>cod_sucursal</field>
-      </key>
-      <value>
-        <name>sk_sucursal</name>
-        <rename>sk_sucursal</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>384</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>dim_siniestro</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>seguros_db</connection>
-    <sql>SELECT sk_siniestro, nro_siniestro FROM "seguro_dw_g29829867"."dim_siniestro"</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cached_row_meta_active>N</cached_row_meta_active>
-    <row-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>sk_siniestro</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>dim_siniestro</origin>
-        <comments>sk_siniestro</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Caracas</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>nro_siniestro</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>dim_siniestro</origin>
-        <comments>nro_siniestro</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Caracas</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-    </row-meta>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>id_lookup 21 2</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <from>dim_siniestro</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>nro_siniestro</name>
-        <field>nro_siniestro</field>
-      </key>
-      <value>
-        <name>sk_siniestro</name>
-        <rename>sk_siniestro</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>384</yloc>
+      <xloc>784</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

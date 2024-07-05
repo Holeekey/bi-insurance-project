@@ -124,6 +124,28 @@ VALUES
     '2020-01-01','2020-12-31','ACTIVO',200000
     );
 
+INSERT INTO seguro_g29827867.registro_siniestro (cod_producto, cod_cliente, nro_contrato, nro_siniestro, cod_sucursal, fecha_siniestro, fecha_respuesta, rechazo, monto_reconocido, monto_solicitado, monto)
+VALUES
+    (1, 1, 1, 2, 1, '2024-01-05', '2024-02-01', false, 80, 150, 100),
+    (3, 2, 2, 1, 2, '2024-02-05', '2024-03-01', true, 180, 300, 300),
+    (2, 1, 3, 3, 3, '2024-03-05', '2024-04-01', true, 180, 250, 200),
+    (5, 3, 4, 5, 4, '2024-04-05', '2024-05-01', false, 300, 450, 400),
+    (1, 4, 2, 2, 1, '2024-05-05', '2024-06-01', false, 160, 250, 200),
+    (4, 1, 3, 3, 4, '2024-01-05', '2024-02-01', false, 520, 650, 600),
+    (3, 2, 1, 1, 3, '2024-02-05', '2024-03-01', true, 200, 250, 200),
+    (1, 2, 4, 3, 2, '2024-03-05', '2024-04-01', false, 90, 150, 100),
+    (2, 4, 2, 2, 1, '2024-04-05', '2024-05-01', true, 400, 550, 500),
+    (5, 1, 3, 1, 1, '2024-05-05', '2024-06-01', true, 100, 250, 200);
+
+INSERT INTO seguro_g29827867.meta (cod_cliente, nro_contrato, cod_producto, fecha_inicio, fecha_fin, monto_meta_ingreso, meta_clientes_renvados, meta_clientes_asegurados)
+VALUES
+    (1, 1, 1, '2024-01-01', '2024-02-01', 2500, 5, 4),
+    (2, 2, 2, '2024-01-01', '2024-02-01', 3500, 9, 5),
+    (3, 3, 3, '2024-01-01', '2024-02-01', 1500, 4, 2),
+    (4, 4, 4, '2024-01-01', '2024-02-01', 5500, 10, 6),
+    (5, 5, 5, '2024-01-01', '2024-02-01', 2500, 4, 2),
+    (6, 3, 2, '2024-01-01', '2024-02-01', 3500, 6, 5),
+    (7, 1, 1, '2024-01-01', '2024-02-01', 5000, 15, 9);
 
 
 INSERT INTO seguro_g29827867.recomienda (cod_cliente, cod_evaluacion, cod_producto, recomienda)

@@ -90,7 +90,6 @@ CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.FACT_METAS (
     sk_fecha_fin INTEGER REFERENCES SEGURO_DW_G29829867.DIM_TIEMPO (sk_tiempo),
     sk_dim_producto INTEGER REFERENCES SEGURO_DW_G29829867.DIM_PRODUCTO (sk_producto),
     cantidad INTEGER,
-    meta_evaluacion DECIMAL(2,2) NOT NULL,
     meta_ingresos DECIMAL(10,2) NOT NULL,
     meta_clientes_asegurados INTEGER NOT NULL,
     meta_clientes_renvados INTEGER NOT NULL,
