@@ -53,42 +53,43 @@ CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.DIM_PRODUCTO (
     nb_tipo_producto VARCHAR(50) NOT NULL,
     calificacion INTEGER NOT NULL
 );
-CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.REGISTRO_CONTRATO (
+CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.FACT_REGISTRO_CONTRATO (
     sk_dim_contrato INTEGER REFERENCES SEGURO_DW_G29829867.DIM_CONTRATO (sk_contrato),
     sk_dim_producto INTEGER REFERENCES SEGURO_DW_G29829867.DIM_PRODUCTO (sk_producto),
-    sk_dim_sucursal INTEGER REFERENCES SEGURO_DW_G29829867.DIM_SUCURSAL (sk_sucursal),
     sk_dim_cliente INTEGER REFERENCES SEGURO_DW_G29829867.DIM_CLIENTE (sk_cliente),
     sk_fecha_inicio INTEGER REFERENCES SEGURO_DW_G29829867.DIM_TIEMPO (sk_tiempo),
     sk_fecha_fin INTEGER REFERENCES SEGURO_DW_G29829867.DIM_TIEMPO (sk_tiempo),
     sk_estado_contrato INTEGER REFERENCES SEGURO_DW_G29829867.DIM_ESTADO_CONTRATO (sk_estado_contrato),
+    cantidad INTEGER,
     monto DECIMAL(10,2) NOT NULL,
-    venta_o_renovacion VARCHAR(10) NOT NULL,
     cantidad_contrato INTEGER NOT NULL,
     cantidad_cliente INTEGER NOT NULL,
     cantidad_producto INTEGER NOT NULL,
-    PRIMARY KEY (sk_dim_contrato,sk_dim_producto,sk_dim_sucursal,sk_dim_cliente,sk_fecha_inicio,sk_fecha_fin,sk_estado_contrato)
+    PRIMARY KEY (sk_dim_contrato,sk_dim_producto,sk_dim_cliente,sk_fecha_inicio,sk_fecha_fin,sk_estado_contrato)
 );
 
-CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.REGISTRO_SINIESTRO (
+CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.FACT_REGISTRO_SINIESTRO (
     sk_dim_producto INTEGER REFERENCES SEGURO_DW_G29829867.DIM_PRODUCTO (sk_producto),
     sk_dim_contrato INTEGER REFERENCES SEGURO_DW_G29829867.DIM_CONTRATO (sk_contrato),
     sk_dim_cliente INTEGER REFERENCES SEGURO_DW_G29829867.DIM_CLIENTE (sk_cliente),
-    sk_fecha_reclamo INTEGER REFERENCES SEGURO_DW_G29829867.DIM_TIEMPO (sk_tiempo),
     sk_fecha_siniestro INTEGER REFERENCES SEGURO_DW_G29829867.DIM_TIEMPO (sk_tiempo),
     sk_fecha_respuesta INTEGER REFERENCES SEGURO_DW_G29829867.DIM_TIEMPO (sk_tiempo),
     sk_dim_siniestro INTEGER REFERENCES SEGURO_DW_G29829867.DIM_SINIESTRO (sk_siniestro),
+    sk_dim_sucursal INTEGER REFERENCES SEGURO_DW_G29829867.DIM_SUCURSAL (sk_sucursal),
+    cantidad INTEGER,
     monto_reconocido DECIMAL(10,2) NOT NULL,
     monto_solicitado DECIMAL(10,2) NOT NULL,
     rechazado BOOLEAN NOT NULL,
-    PRIMARY KEY (sk_dim_producto,sk_dim_contrato,sk_dim_cliente,sk_fecha_reclamo,sk_fecha_siniestro,sk_fecha_respuesta,sk_dim_siniestro)
+    PRIMARY KEY (sk_dim_producto,sk_dim_contrato,sk_dim_cliente,sk_fecha_siniestro,sk_fecha_respuesta,sk_dim_siniestro)
 );
 
-CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.METAS (
+CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.FACT_METAS (
     sk_dim_cliente INTEGER REFERENCES SEGURO_DW_G29829867.DIM_CLIENTE (sk_cliente),
     sk_dim_contrato INTEGER REFERENCES SEGURO_DW_G29829867.DIM_CONTRATO (sk_contrato),
     sk_fecha_inicio INTEGER REFERENCES SEGURO_DW_G29829867.DIM_TIEMPO (sk_tiempo),
     sk_fecha_fin INTEGER REFERENCES SEGURO_DW_G29829867.DIM_TIEMPO (sk_tiempo),
     sk_dim_producto INTEGER REFERENCES SEGURO_DW_G29829867.DIM_PRODUCTO (sk_producto),
+    cantidad INTEGER,
     meta_evaluacion DECIMAL(2,2) NOT NULL,
     meta_ingresos DECIMAL(10,2) NOT NULL,
     meta_clientes_asegurados INTEGER NOT NULL,
@@ -96,11 +97,11 @@ CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.METAS (
     PRIMARY KEY (sk_dim_cliente,sk_dim_contrato,sk_fecha_inicio,sk_fecha_fin,sk_dim_producto)
 );
 
-CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.RECOMENDACION (
+CREATE TABLE IF NOT EXISTS SEGURO_DW_G29829867.FACT_EVALUACION_SERVICIO (
     sk_dim_cliente INTEGER REFERENCES SEGURO_DW_G29829867.DIM_CLIENTE (sk_cliente),
-    sk_dim_sucursal INTEGER REFERENCES SEGURO_DW_G29829867.DIM_SUCURSAL (sk_sucursal),
     sk_dim_producto INTEGER REFERENCES SEGURO_DW_G29829867.DIM_PRODUCTO (sk_producto),
     sk_dim_evaluacion_servicio INTEGER REFERENCES SEGURO_DW_G29829867.DIM_EVALUACION_SERVICIO(sk_evaluacion_servicio),
+    cantidad INTEGER,
     recomienda_amigo BOOLEAN NOT NULL,
-    PRIMARY KEY (sk_dim_cliente,sk_dim_sucursal,sk_dim_producto,sk_dim_evaluacion_servicio)
+    PRIMARY KEY (sk_dim_cliente,sk_dim_producto,sk_dim_evaluacion_servicio)
 );

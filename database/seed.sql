@@ -67,6 +67,8 @@ VALUES
     ('David Cuahonte','15877763','4247412345','Guanana','M','teriotge@gmail.com',(SELECT cod_sucursal FROM SEGURO_G29827867.SUCURSAL WHERE nb_sucursal = 'Calle Paez')),
     ('Marisol Gutiérrez','10978432','4244412343','San Mateo','F','marisol@gmail.com',(SELECT cod_sucursal FROM SEGURO_G29827867.SUCURSAL WHERE nb_sucursal = 'Calle Paez'));
 
+
+
 INSERT INTO SEGURO_G29827867.EVALUACION_SERVICIO (nb_descripcion)
 VALUES
     ('Malo'),
@@ -74,6 +76,7 @@ VALUES
     ('Bueno'),
     ('Muy bueno'),
     ('Excelente');
+
 
 INSERT INTO SEGURO_G29827867.SINIESTRO (descrip_siniestro)
 VALUES
@@ -114,4 +117,58 @@ VALUES
     ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Alejandro Gómez'),
     3,(SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Automóvil'),
     '2020-01-01','2020-12-31','SUSPENDIDO',250000
+    )
+    ,
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Alejandro Gómez'),
+    3,(SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Vida'),
+    '2020-01-01','2020-12-31','ACTIVO',200000
     );
+
+
+
+INSERT INTO seguro_g29827867.recomienda (cod_cliente, cod_evaluacion, cod_producto, recomienda)
+VALUES
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Lionel Messi'),
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Malo'),
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Salud'),
+    false),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Paulo Dybala'),
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Bueno'), 
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Automóvil'), 
+    true),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Samuel Calonzo'), 
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Regular'), 
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Incendios'), 
+    false),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Samuel Calonzo'), 
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Muy bueno'), 
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Incendios'), 
+    true),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Samuel Calonzo'), 
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Malo'), 
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Vida'), 
+    false),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Marisol Gutiérrez'), 
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Bueno'), 
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Accidentes Personales'), 
+    true),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Lionel Messi'), 
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Excelente'), 
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Terreno'), 
+    true),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Sergio Romero'), 
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Bueno'), 
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Asitencia de viajes'), 
+    true),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Emiliano Martínez'), 
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Regular'), 
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Asitencia de viajes'), 
+    false),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Indigo Flores'), 
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Malo'), 
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Asitencia de viajes'), 
+    false),
+    ((SELECT cod_cliente FROM SEGURO_G29827867.CLIENTE WHERE nb_cliente = 'Karely Ruiz'), 
+    (SELECT cod_evaluacion_servicio FROM SEGURO_G29827867.evaluacion_servicio WHERE nb_descripcion = 'Malo'), 
+    (SELECT cod_producto FROM SEGURO_G29827867.PRODUCTO WHERE nb_producto = 'Asitencia escolar'), 
+    false);

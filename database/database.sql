@@ -69,11 +69,12 @@ CREATE TABLE IF NOT EXISTS SEGURO_G29827867.REGISTRO_SINIESTRO(
     cod_cliente INTEGER REFERENCES SEGURO_G29827867.CLIENTE(cod_cliente),
     nro_contrato INTEGER REFERENCES SEGURO_G29827867.CONTRATO(nro_contrato),
     nro_siniestro INTEGER REFERENCES SEGURO_G29827867.SINIESTRO(nro_siniestro),
+    cod_sucursal INTEGER REFERENCES SEGURO_G29827867.SUCURSAL(cod_sucursal),
     fecha_siniestro DATE NOT NULL,
     fecha_respuesta DATE NOT NULL,
     rechazo BOOLEAN NOT NULL,
     monto_reconocido DECIMAL(10,2) NOT NULL,
     monto_solicitado DECIMAL(10,2) NOT NULL,
     monto DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY(nro_contrato, nro_siniestro, fecha_siniestro, cod_cliente)
+    PRIMARY KEY(nro_contrato, nro_siniestro, fecha_siniestro, cod_cliente, cod_sucursal)
 );
