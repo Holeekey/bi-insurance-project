@@ -293,7 +293,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:/Users/samue/OneDrive/Documentos/proyecto-bi/bi-insurance-project/datawarehouse/dim-transformations/transformacion_dim_contrato.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}/transformacion_dim_contrato.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -332,7 +332,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:/Users/samue/OneDrive/Documentos/proyecto-bi/bi-insurance-project/datawarehouse/dim-transformations\transformacion_dim_evaluacion_servicio.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}\transformacion_dim_evaluacion_servicio.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -393,7 +393,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:/Users/samue/OneDrive/Documentos/proyecto-bi/bi-insurance-project/datawarehouse/dim-transformations/transformacion_dim_siniestro.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}/transformacion_dim_siniestro.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -432,7 +432,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:/Users/samue/OneDrive/Documentos/proyecto-bi/bi-insurance-project/datawarehouse/dim-transformations/transformacion_dim_estado_contrato.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}/transformacion_dim_estado_contrato.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -471,7 +471,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:/Users/samue/OneDrive/Documentos/proyecto-bi/bi-insurance-project/datawarehouse/dim-transformations/transformacion_dim_cliente.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}/transformacion_dim_cliente.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -510,7 +510,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:/Users/samue/OneDrive/Documentos/proyecto-bi/bi-insurance-project/datawarehouse/dim-transformations/transformacion_dim_producto.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}/transformacion_dim_producto.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -549,7 +549,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:/Users/samue/OneDrive/Documentos/proyecto-bi/bi-insurance-project/datawarehouse/dim-transformations/transformacion_dim_sucursal.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}/transformacion_dim_sucursal.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -588,7 +588,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:/Users/samue/OneDrive/Documentos/proyecto-bi/bi-insurance-project/datawarehouse/dim-transformations/transformacion_dim_tiempo.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}/transformacion_dim_tiempo.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>

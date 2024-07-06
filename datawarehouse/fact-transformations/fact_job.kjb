@@ -293,7 +293,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Users\samue\OneDrive\Documentos\proyecto-bi\bi-insurance-project\datawarehouse\fact-transformations\fact-evaluacion-servicios-transformation.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}\fact-evaluacion-servicios-transformation.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -354,7 +354,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Users\samue\OneDrive\Documentos\proyecto-bi\bi-insurance-project\datawarehouse\fact-transformations\fact-registro-contratos-transformation.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}\fact-registro-contratos-transformation.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -393,7 +393,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Users\samue\OneDrive\Documentos\proyecto-bi\bi-insurance-project\datawarehouse\fact-transformations\fact-registro-siniestro-transformation.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}\fact-registro-siniestro-transformation.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -432,7 +432,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Users\samue\OneDrive\Documentos\proyecto-bi\bi-insurance-project\datawarehouse\fact-transformations\fact-metas-transformation.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}\fact-metas-transformation.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
